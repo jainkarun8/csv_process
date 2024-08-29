@@ -121,5 +121,6 @@ The database schema includes tables to store product and image data, as well as 
 
 ### Postman Collection
 
-You can test the APIs using the Postman collection available 
+You can test the APIs using the Postman collection available
+Added json file 
 
