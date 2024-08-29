@@ -124,3 +124,5 @@ The database schema includes tables to store product and image data, as well as 
 You can test the APIs using the Postman collection available
 Added json file 
 
+### LLM Design
+https://docs.google.com/document/d/1nKl4vkWpiZ_Tn0omfhsfbtsFVeo__fWNXw0zg4dpdeg/edit?usp=sharing
