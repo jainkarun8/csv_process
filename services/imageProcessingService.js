@@ -23,7 +23,7 @@ exports.processImages = async (requestId, productName, imageUrls) => {
                 const imageBuffer = Buffer.from(response.data, 'binary');
 
                 const processedImage = await sharp(imageBuffer)
-                .resize({ width: 800 }) // Or other desired dimensions
+                .resize({ width: 800 })
                 .jpeg({ quality: 50 }) // Compress by 50% for JPEG images
                 .toBuffer();
 

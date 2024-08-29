@@ -21,10 +21,8 @@ const createDatabaseAndTables = async () => {
     });
 
     try {
-        // Create the uuid-ossp extension if it does not exist
         await newPool.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";');
 
-        // Create tables with UUID columns
         await newPool.query(`
             CREATE TABLE IF NOT EXISTS requests (
                 id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -47,7 +45,7 @@ const createDatabaseAndTables = async () => {
     } catch (err) {
         console.error('Error setting up the database:', err);
     } finally {
-        newPool.end(); // End the new pool connection
+        newPool.end(); 
     }
 };
 
@@ -55,18 +53,15 @@ const createDatabaseAndTables = async () => {
     try {
         // Drop the 'imagedb' database if it exists
         await defaultPool.query('DROP DATABASE IF EXISTS imagedb;');
-        // Create a new 'imagedb' database
         await defaultPool.query('CREATE DATABASE imagedb;');
 
         console.log('Database "imagedb" created successfully.');
 
-        // End the default pool connection
         await defaultPool.end();
 
-        // Proceed to create tables in the new database
         await createDatabaseAndTables();
     } catch (err) {
         console.error('Error setting up the database:', err);
-        await defaultPool.end(); // Ensure to end the default pool connection on error
+        await defaultPool.end(); 
     }
 })();

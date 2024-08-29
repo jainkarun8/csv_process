@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "337a2ea3-6d7a-400e-91c8-465aaf117f3a",
+		"name": "karun",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37983555"
+	},
+	"item": [
+		{
+			"name": "Upload Api",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef6639c-40e3-4850-9f6f-5259b3ce9d80"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"upload"
+					]
+				},
+				"description": "Accepts a CSV file and returns a unique request ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Webhook api",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestId\": \"d41b656d-b72c-4b55-8355-cdec097bd216\",\r\n    \"imageUrls\": [\"http://example.com/image1.jpg\"],\r\n    \"status\": \"processed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/webhook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"webhook"
+					]
+				},
+				"description": "Receives results from image processing"
+			},
+			"response": []
+		},
+		{
+			"name": "Status Api",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/status/737dc0c3-0512-4697-9e17-dd914f596acf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"status",
+						"737dc0c3-0512-4697-9e17-dd914f596acf"
+					]
+				},
+				"description": "Retrieves the processing status of a request"
+			},
+			"response": []
+		}
+	]
+}

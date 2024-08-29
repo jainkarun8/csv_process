@@ -4,7 +4,6 @@ const { v4: uuidv4 } = require('uuid');
 const imageProcessingService = require('./imageProcessingService');
 const { pool } = require('../models/db');
 
-// Utility function to validate URL
 function isValidUrl(url) {
     try {
         new URL(url);
@@ -25,7 +24,7 @@ exports.processCSV = async (filePath) => {
         fs.createReadStream(filePath)
             .pipe(csv())
             .on('data', (row) => {
-                // Split and clean URLs
+
                 const imageUrls = row['Input Image Urls']
                     .split(',')
                     .map(url => url.trim())
@@ -36,7 +35,6 @@ exports.processCSV = async (filePath) => {
                     return;
                 }
 
-                // Push the image processing task
                 tasks.push(imageProcessingService.processImages(requestId, row['Product Name'], imageUrls));
             })
             .on('end', async () => {

@@ -17,7 +17,6 @@ exports.handleWebhook = async (req, res) => {
         );
         await Promise.all(updatePromises);
 
-        // Optionally, update the request status
         const failedCountResult = await pool.query(
             'SELECT COUNT(*) FROM images WHERE request_id = $1 AND status = $2',
             [requestId, 'failed']
